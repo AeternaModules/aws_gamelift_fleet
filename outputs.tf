@@ -16,7 +16,7 @@ output "gamelift_fleets_build_id" {
 }
 output "gamelift_fleets_certificate_configuration" {
   description = "Map of certificate_configuration values across all gamelift_fleets, keyed the same as var.gamelift_fleets"
-  value       = { for k, v in aws_gamelift_fleet.gamelift_fleets : k => v.certificate_configuration if v.certificate_configuration != null && length(v.certificate_configuration) > 0 }
+  value       = { for k, v in aws_gamelift_fleet.gamelift_fleets : k => one(v.certificate_configuration) if v.certificate_configuration != null && length(v.certificate_configuration) > 0 }
 }
 output "gamelift_fleets_description" {
   description = "Map of description values across all gamelift_fleets, keyed the same as var.gamelift_fleets"
@@ -64,11 +64,11 @@ output "gamelift_fleets_region" {
 }
 output "gamelift_fleets_resource_creation_limit_policy" {
   description = "Map of resource_creation_limit_policy values across all gamelift_fleets, keyed the same as var.gamelift_fleets"
-  value       = { for k, v in aws_gamelift_fleet.gamelift_fleets : k => v.resource_creation_limit_policy if v.resource_creation_limit_policy != null && length(v.resource_creation_limit_policy) > 0 }
+  value       = { for k, v in aws_gamelift_fleet.gamelift_fleets : k => one(v.resource_creation_limit_policy) if v.resource_creation_limit_policy != null && length(v.resource_creation_limit_policy) > 0 }
 }
 output "gamelift_fleets_runtime_configuration" {
   description = "Map of runtime_configuration values across all gamelift_fleets, keyed the same as var.gamelift_fleets"
-  value       = { for k, v in aws_gamelift_fleet.gamelift_fleets : k => v.runtime_configuration if v.runtime_configuration != null && length(v.runtime_configuration) > 0 }
+  value       = { for k, v in aws_gamelift_fleet.gamelift_fleets : k => one(v.runtime_configuration) if v.runtime_configuration != null && length(v.runtime_configuration) > 0 }
 }
 output "gamelift_fleets_script_arn" {
   description = "Map of script_arn values across all gamelift_fleets, keyed the same as var.gamelift_fleets"
